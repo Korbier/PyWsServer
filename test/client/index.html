@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script>
+            var ws = new WebSocket("ws://127.0.0.1:6789/"),
+              messages = document.createElement('ul');
+            ws.onmessage = function (event) {
+                var messages = document.getElementsByTagName('ul')[0];
+                var message = document.createElement('li');
+                var content = document.createTextNode(event.data);
+                message.appendChild(content);
+                messages.appendChild(message);
+            };
+            ws.onopen = function() {
+              ws.send( '{ "module": "property", "topic" : "list" }' );
+              ws.send( '{ "module": "property", "topic" : "get", "args": ["createdAt"] }' );
+              ws.send( '{ "module": "property", "topic" : "get", "args": ["startedAt"] }' );
+              ws.send( '{ "module": "property", "topic" : "get", "args": ["ZZZZZZ"] }' );
+              ws.send( '{ "module": "property", "topic" : "set", "args": ["ZZZZZZ", "OLA"] }' );
+              ws.send( '{ "module": "property", "topic" : "get", "args": ["ZZZZZZ"] }' );
+              ws.send( '{ "module": "property", "topic" : "set", "args": ["createdAt", "poiuet"] }' );
+              ws.send( '{ "module": "property", "topic" : "get", "args": ["createdAt"] }' );
+            }
+            document.body.appendChild(messages);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,8 @@
+PRAGMA foreign_keys = ON;
+
+CREATE TABLE IF NOT EXISTS Properties (
+    id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,
+    name  TEXT NOT NULL UNIQUE,
+    value TEXT NOT NULL,
+    writable INTEGER DEFAULT 1
+)

@@ -1,0 +1,33 @@
+Project
+	id
+	name
+	description
+	createdAt
+	updatedAt
+
+DocumentType (Ex: Document, Image, Video, ...)
+	id
+	name
+	icon
+
+DocumentCategory
+	id
+	name
+	parent
+
+Document
+	id
+	name
+	description
+	project -> Project.id
+	type -> DocumentType.id
+	category -> DocumentCategory.id
+	url
+	createdAt
+	modifiedAt
+		
+Service
+	project
+		create
+		delete
+		update ( name, description )
